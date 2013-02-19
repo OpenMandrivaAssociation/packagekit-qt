@@ -10,6 +10,7 @@ Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Source0:	http://www.packagekit.org/releases/PackageKit-Qt-%{version}.tar.xz
+Patch0:		PackageKit-Qt-0.8.7-fix-pkgconfig-libdir-path.patch
 URL:		http://www.packagekit.org
 BuildRequires:	packagekit >= %{version}
 BuildRequires:	pkgconfig(QtCore)
