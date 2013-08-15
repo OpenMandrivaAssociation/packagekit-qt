@@ -9,12 +9,12 @@ Version:	0.8.7
 Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Packaging
+Url:		http://www.packagekit.org
 Source0:	http://www.packagekit.org/releases/PackageKit-Qt-%{version}.tar.xz
 Patch0:		PackageKit-Qt-0.8.7-fix-pkgconfig-libdir-path.patch
-URL:		http://www.packagekit.org
+BuildRequires:	cmake
 BuildRequires:	packagekit >= %{version}
 BuildRequires:	pkgconfig(QtCore)
-BuildRequires:	cmake
 Requires:	packagekit >= %{version}
 
 %description
@@ -24,7 +24,6 @@ packages in a secure way using a cross-distro, cross-architecture API.
 %package -n	%{libname}
 Summary:	Libraries for accessing PackageKit-Qt
 Group:		System/Configuration/Packaging
-Obsoletes:	%{_lib}packagekit-qt-qt2_5 < 0.8.6-2
 Requires:	packagekit >= %{version}
 
 %description -n	%{libname}
@@ -41,7 +40,7 @@ Conflicts:	packagekit-devel < %{version}
 Headers and libraries for PackageKit.
 
 %prep
-%setup -q -n PackageKit-Qt-%{version}
+%setup -qn PackageKit-Qt-%{version}
 %apply_patches
 
 %build
@@ -60,3 +59,4 @@ Headers and libraries for PackageKit.
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/cmake/%{name}%{api}
+
