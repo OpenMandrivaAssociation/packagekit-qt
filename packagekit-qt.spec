@@ -1,16 +1,16 @@
-%define	api	2
-%define	major	6
-%define	libname	%mklibname %{name} %{api} %{major}
-%define	devname	%mklibname -d %{name}
+%define api 2
+%define major 6
+%define libname %mklibname %{name} %{api} %{major}
+%define devname %mklibname -d %{name}
 
 Summary:	A DBUS packaging abstraction layer
 Name:		packagekit-qt
-Version:	0.8.8
-Release:	7
+Version:	0.9.2
+Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://www.packagekit.org
-Source0:	http://www.packagekit.org/releases/PackageKit-Qt-%{version}.tar.xz
+Source0:	http://www.freedesktop.org/software/PackageKit/releases/PackageKit-Qt-%{version}.tar.xz
 Patch0:		PackageKit-Qt-0.8.7-fix-pkgconfig-libdir-path.patch
 BuildRequires:	cmake
 BuildRequires:	packagekit >= %{version}

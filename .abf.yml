@@ -1,2 +1,4 @@
+removed_sources:
+  PackageKit-Qt-0.8.8.tar.xz: 5b9df288ce99c799bdb00a9dcfb039a498ee27aa
 sources:
-  "PackageKit-Qt-0.8.8.tar.xz": 5b9df288ce99c799bdb00a9dcfb039a498ee27aa
+  PackageKit-Qt-0.9.2.tar.xz: 856ac063449b57fb3116e5da973f0f06ae62560b
