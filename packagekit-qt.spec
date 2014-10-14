@@ -1,17 +1,17 @@
-%define api 2
-%define major 6
-%define libname %mklibname %{name} %{api} %{major}
+%define api 4
+%define major 0
+%define binname packagekitqt
+%define libname %mklibname %{binname} %{api} %{major}
 %define devname %mklibname -d %{name}
 
 Summary:	A DBUS packaging abstraction layer
 Name:		packagekit-qt
-Version:	0.9.2
+Version:	0.9.5
 Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://www.packagekit.org
 Source0:	http://www.freedesktop.org/software/PackageKit/releases/PackageKit-Qt-%{version}.tar.xz
-Patch0:		PackageKit-Qt-0.8.7-fix-pkgconfig-libdir-path.patch
 BuildRequires:	cmake
 BuildRequires:	packagekit >= %{version}
 BuildRequires:	pkgconfig(QtCore)
@@ -51,12 +51,12 @@ Headers and libraries for PackageKit.
 %makeinstall_std -C build
 
 %files -n %{libname}
-%{_libdir}/lib%{name}%{api}.so.%{major}
-%{_libdir}/lib%{name}%{api}.so.%{version}
+%{_libdir}/lib%{binname}%{api}.so.%{major}
+%{_libdir}/lib%{binname}%{api}.so.%{version}
 
 %files -n %{devname}
-%{_includedir}/PackageKit/%{name}%{api}
+%{_includedir}/%{binname}%{api}/PackageKit
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_libdir}/cmake/%{name}%{api}
+%{_libdir}/cmake/%{binname}%{api}
 
