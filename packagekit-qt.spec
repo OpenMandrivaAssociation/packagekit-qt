@@ -24,6 +24,7 @@ BuildRequires:	pkgconfig(QtCore)
 %endif
 %if %{with qt5}
 BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	qmake5
 %endif
 Requires:	packagekit >= %{version}
