@@ -33,6 +33,7 @@ Requires:	packagekit >= %{version}
 PackageKit is a DBUS abstraction layer that allows the session user to manage
 packages in a secure way using a cross-distro, cross-architecture API.
 
+%if %{with qt4}
 %package -n	%{libname}
 Summary:	Libraries for accessing PackageKit-Qt
 Group:		System/Configuration/Packaging
@@ -50,7 +51,9 @@ Conflicts:	packagekit-devel < %{version}
 
 %description -n %{devname}
 Headers and libraries for PackageKit.
+%endif
 
+%if %{with qt5}
 %package -n	%{libname5}
 Summary:	Libraries for accessing PackageKit-Qt5
 Group:		System/Configuration/Packaging
@@ -68,6 +71,7 @@ Conflicts:	packagekit-devel < %{version}
 
 %description -n %{devname5}
 Headers and libraries for PackageKit-Qt5.
+%endif
 
 %prep
 %setup -qn PackageKit-Qt-%{version}
@@ -99,6 +103,7 @@ ln -s build-qt5 build
 %makeinstall_std -C build
 %endif
 
+%if %{with qt4}
 %files -n %{libname}
 %{_libdir}/lib%{binname}%{api}.so.%{major}
 %{_libdir}/lib%{binname}%{api}.so.%{version}
@@ -108,7 +113,9 @@ ln -s build-qt5 build
 %{_libdir}/lib%{binname}%{api}.so
 %{_libdir}/pkgconfig/packagekitqt%{api}.pc
 %{_libdir}/cmake/%{binname}%{api}
+%endif
 
+%if %{with qt5}
 %files -n %{libname5}
 %{_libdir}/lib%{binname}5.so.%{major}*
 
@@ -117,3 +124,4 @@ ln -s build-qt5 build
 %{_libdir}/lib%{binname}5.so
 %{_libdir}/pkgconfig/packagekitqt5.pc
 %{_libdir}/cmake/%{binname}5
+%endif
