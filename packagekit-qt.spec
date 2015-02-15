@@ -1,20 +1,32 @@
-%define	api	2
-%define	major	6
-%define	libname	%mklibname %{name} %{api} %{major}
-%define	devname	%mklibname -d %{name}
+%define api 4
+%define major 0
+%define binname packagekitqt
+%define libname %mklibname %{binname} %{api} %{major}
+%define devname %mklibname -d %{name}
+%define libname5 %mklibname %{binname}5 %{major}
+%define devname5 %mklibname -d %{binname}5
+
+%bcond_without qt4
+%bcond_with qt5
 
 Summary:	A DBUS packaging abstraction layer
 Name:		packagekit-qt
-Version:	0.8.8
-Release:	2
+Version:	0.9.5
+Release:	0.1
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://www.packagekit.org
-Source0:	http://www.packagekit.org/releases/PackageKit-Qt-%{version}.tar.xz
-Patch0:		PackageKit-Qt-0.8.7-fix-pkgconfig-libdir-path.patch
+Source0:	http://www.freedesktop.org/software/PackageKit/releases/PackageKit-Qt-%{version}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	packagekit >= %{version}
+%if %{with qt4}
 BuildRequires:	pkgconfig(QtCore)
+%endif
+%if %{with qt5}
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5DBus)
+BuildRequires:	qmake5
+%endif
 Requires:	packagekit >= %{version}
 
 %description
@@ -39,24 +51,69 @@ Conflicts:	packagekit-devel < %{version}
 %description -n %{devname}
 Headers and libraries for PackageKit.
 
+%package -n	%{libname5}
+Summary:	Libraries for accessing PackageKit-Qt5
+Group:		System/Configuration/Packaging
+Requires:	packagekit >= %{version}
+
+%description -n	%{libname5}
+Libraries for accessing PackageKit-Qt5.
+
+%package -n	%{devname5}
+Summary:	Libraries and headers for PackageKit-Qt5
+Group:		Development/Other
+Requires:	%{libname5} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
+Conflicts:	packagekit-devel < %{version}
+
+%description -n %{devname5}
+Headers and libraries for PackageKit-Qt5.
+
 %prep
 %setup -qn PackageKit-Qt-%{version}
 %apply_patches
 
 %build
-%cmake_qt4
+%if %{with qt4}
+%cmake
 %make
+cd ..
+mv build build-qt4
+%endif
+
+%if %{with qt5}
+%cmake -DUSE_QT5:BOOL=ON
+%make
+cd ..
+mv build build-qt5
+%endif
 
 %install
+%if %{with qt4}
+ln -s build-qt4 build
 %makeinstall_std -C build
+rm build
+%endif
+%if %{with qt5}
+ln -s build-qt5 build
+%makeinstall_std -C build
+%endif
 
 %files -n %{libname}
-%{_libdir}/lib%{name}%{api}.so.%{major}
-%{_libdir}/lib%{name}%{api}.so.%{version}
+%{_libdir}/lib%{binname}%{api}.so.%{major}
+%{_libdir}/lib%{binname}%{api}.so.%{version}
 
 %files -n %{devname}
-%{_includedir}/PackageKit/%{name}%{api}
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
-%{_libdir}/cmake/%{name}%{api}
+%{_includedir}/%{binname}%{api}/PackageKit
+%{_libdir}/lib%{binname}%{api}.so
+%{_libdir}/pkgconfig/packagekitqt%{api}.pc
+%{_libdir}/cmake/%{binname}%{api}
 
+%files -n %{libname5}
+%{_libdir}/lib%{binname}5.so.%{major}*
+
+%files -n %{devname5}
+%{_includedir}/%{binname}5
+%{_libdir}/lib%{binname}5.so
+%{_libdir}/pkgconfig/packagekitqt5.pc
+%{_libdir}/cmake/%{binname}5
