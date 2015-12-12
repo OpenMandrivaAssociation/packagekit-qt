@@ -19,10 +19,8 @@ Url:		http://www.packagekit.org
 Source0:	http://www.freedesktop.org/software/PackageKit/releases/PackageKit-Qt-%{version}.tar.xz
 Patch0:		PackageKit-Qt-0.9.5-use-full-cmakedirs.patch
 # (tpg) patches from upstream git
-Patch1:		0001-Make-use-of-QLoggingCategory-packagekitqt.patch
-Patch2:		0002-Fix-copy-n-paste-typo.patch
-Patch3:		0003-Fix-compilation-with-strict-QString-constructors-on-.patch
-Patch4:		0004-Move-enumTo-FromString-code-from-header-to-cpp-file.patch
+Patch1:		0003-Fix-compilation-with-strict-QString-constructors-on-.patch
+Patch2:		0004-Move-enumTo-FromString-code-from-header-to-cpp-file.patch
 
 BuildRequires:	cmake
 BuildRequires:	packagekit >= %{version}
