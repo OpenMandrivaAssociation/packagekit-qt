@@ -12,7 +12,7 @@
 Summary:	A DBUS packaging abstraction layer
 Name:		packagekit-qt
 Version:	0.9.5
-Release:	8
+Release:	9
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://www.packagekit.org
