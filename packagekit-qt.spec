@@ -12,7 +12,6 @@ License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://www.packagekit.org
 Source0:	http://www.freedesktop.org/software/PackageKit/releases/PackageKit-Qt-%{version}.tar.xz
-Patch0:		PackageKit-Qt-0.9.5-use-full-cmakedirs.patch
 BuildRequires:	cmake
 BuildRequires:	packagekit >= %{version}
 BuildRequires:	pkgconfig(Qt5Core)
