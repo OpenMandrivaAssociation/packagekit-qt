@@ -50,7 +50,7 @@ Headers and libraries for PackageKit.
 %cmake_qt5 -DUSE_QT5:BOOL=ON
 
 %build
-%make
+%make -C build
 
 %install
 %makeinstall_std -C build
