@@ -6,21 +6,18 @@
 %define libname5 %mklibname %{binname}5 %{major}
 %define devname5 %mklibname -d %{binname}5
 
-%bcond_without qt4
+# qt4 no longer supported
+%bcond_with qt4
 %bcond_without qt5
 
 Summary:	A DBUS packaging abstraction layer
 Name:		packagekit-qt
-Version:	0.9.5
-Release:	9
+Version:	0.9.6
+Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://www.packagekit.org
 Source0:	http://www.freedesktop.org/software/PackageKit/releases/PackageKit-Qt-%{version}.tar.xz
-Patch0:		PackageKit-Qt-0.9.5-use-full-cmakedirs.patch
-# (tpg) patches from upstream git
-Patch1:		0003-Fix-compilation-with-strict-QString-constructors-on-.patch
-Patch2:		0004-Move-enumTo-FromString-code-from-header-to-cpp-file.patch
 
 BuildRequires:	cmake
 BuildRequires:	packagekit >= %{version}
@@ -30,6 +27,7 @@ BuildRequires:	pkgconfig(QtCore)
 %if %{with qt5}
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5DBus)
+BuildRequires:	pkgconfig(Qt5Xml)
 BuildRequires:	qmake5
 %endif
 Requires:	packagekit >= %{version}
