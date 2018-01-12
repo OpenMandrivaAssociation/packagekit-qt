@@ -11,7 +11,7 @@ Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://www.packagekit.org
-Source0:	http://www.freedesktop.org/software/PackageKit/releases/PackageKit-Qt-%{version}.tar.xz
+Source0:	http://www.freedesktop.org/software/PackageKit/releases/PackageKit-Qt-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	packagekit >= %{version}
 BuildRequires:	pkgconfig(Qt5Core)
