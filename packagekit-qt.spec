@@ -1,12 +1,12 @@
 %define api 5
-%define major 0
+%define major 1
 %define binname packagekitqt
 %define libname %mklibname %{binname} %{api} %{major}
 %define devname %mklibname -d %{binname} %{api}
 
 Summary:	A DBUS packaging abstraction layer
 Name:		packagekit-qt
-Version:	0.10.0
+Version:	1.0.1
 Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Packaging

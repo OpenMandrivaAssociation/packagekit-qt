@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   PackageKit-Qt-0.10.0.tar.gz: 24d42de56b3ab23b233bb809c1d6a4e1e23a7e11
+sources:
+  PackageKit-Qt-1.0.1.tar.gz: a6b6486722ade64a0d8cdc620972c8503b2b8915
