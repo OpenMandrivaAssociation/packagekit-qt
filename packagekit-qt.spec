@@ -44,7 +44,7 @@ Headers and libraries for PackageKit-Qt5.
 
 %prep
 %setup -qn PackageKit-Qt-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 %cmake -DUSE_QT5:BOOL=ON
