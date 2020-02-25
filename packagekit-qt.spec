@@ -6,12 +6,12 @@
 
 Summary:	A DBUS packaging abstraction layer
 Name:		packagekit-qt
-Version:	1.0.1
-Release:	3
+Version:	1.0.2
+Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://www.packagekit.org
-Source0:	https://github.com/hughsie/PackageKit-Qt/archive/v%{version}.tar.gz
+Source0:	https://github.com/hughsie/PackageKit-Qt/releases/download/v%{version}/PackageKit-Qt-%{version}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	packagekit >= %{version}
 BuildRequires:	pkgconfig(Qt5Core)
@@ -48,10 +48,10 @@ Headers and libraries for PackageKit-Qt5.
 
 %build
 %cmake -DUSE_QT5:BOOL=ON
-%make
+%make_build
 
 %install
-%makeinstall_std -C build
+%make_install -C build
 
 %files -n %{libname}
 %{_libdir}/lib%{binname}%{api}.so.%{major}*
