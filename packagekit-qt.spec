@@ -7,11 +7,12 @@
 Summary:	A DBUS packaging abstraction layer
 Name:		packagekit-qt
 Version:	1.0.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://www.packagekit.org
 Source0:	https://github.com/hughsie/PackageKit-Qt/releases/download/v%{version}/PackageKit-Qt-%{version}.tar.xz
+Patch0:		0000-Prefer-invoking-methods-by-pointer-rather-than-by-na.patch
 BuildRequires:	cmake
 BuildRequires:	packagekit >= %{version}
 BuildRequires:	pkgconfig(Qt5Core)
@@ -24,15 +25,15 @@ Requires:	packagekit >= %{version}
 PackageKit is a DBUS abstraction layer that allows the session user to manage
 packages in a secure way using a cross-distro, cross-architecture API.
 
-%package -n	%{libname}
+%package -n %{libname}
 Summary:	Libraries for accessing PackageKit-Qt5
 Group:		System/Configuration/Packaging
 Requires:	packagekit >= %{version}
 
-%description -n	%{libname}
+%description -n %{libname}
 Libraries for accessing PackageKit-Qt5.
 
-%package -n	%{devname}
+%package -n %{devname}
 Summary:	Libraries and headers for PackageKit-Qt5
 Group:		Development/Other
 Requires:	%{libname} = %{EVRD}
@@ -43,8 +44,7 @@ Conflicts:	packagekit-devel < %{version}
 Headers and libraries for PackageKit-Qt5.
 
 %prep
-%setup -qn PackageKit-Qt-%{version}
-%autopatch -p1
+%autosetup -n PackageKit-Qt-%{version} -p1
 
 %build
 %cmake -DUSE_QT5:BOOL=ON
