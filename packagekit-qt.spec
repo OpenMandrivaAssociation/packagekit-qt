@@ -6,13 +6,12 @@
 
 Summary:	A DBUS packaging abstraction layer
 Name:		packagekit-qt
-Version:	1.0.2
-Release:	2
+Version:	1.1.0
+Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Packaging
 Url:		http://www.packagekit.org
 Source0:	https://github.com/hughsie/PackageKit-Qt/releases/download/v%{version}/PackageKit-Qt-%{version}.tar.xz
-Patch0:		0000-Prefer-invoking-methods-by-pointer-rather-than-by-na.patch
 BuildRequires:	cmake
 BuildRequires:	packagekit >= %{version}
 BuildRequires:	pkgconfig(Qt5Core)
